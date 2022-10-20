@@ -1,0 +1,83 @@
+import Game;
+import OXOMove;
+import Board;
+import Player;
+import Move;
+import java.awt.*;
+import java.io.*;
+
+public class OXO extends Panel implements Game {
+     private Board board;
+
+     public OXO(Board b) {
+        board = b;
+     }
+
+    public Player validate(Move m) {
+// Note that because of the usual limitation of the type system, we have
+// to check that we have a coherent set of subclasses around. Or is there
+// a better way?
+      boolean ok = ((m instanceof OXOMove) && 
+		    (((OXOMove)m).square()).owner() == null);
+      return (ok ? ((((OXOMove)m).player() == board.noughtP) ?
+		    board.crossP : board.noughtP)
+	      : null);
+    }
+
+// check all possible winning combinations to see if player has won
+// very boring way to code this!
+public boolean hasWon(Player p) {
+  if (
+((board.owner(0,0) == p) && 
+ (board.owner(0,1) == p) && 
+ (board.owner(0,2) == p)) ||
+
+((board.owner(1,0) == p) &&
+ (board.owner(1,1) == p) &&
+ (board.owner(1,2) == p)) ||
+
+((board.owner(2,0) == p) &&
+ (board.owner(2,1) == p) &&
+ (board.owner(2,2) == p)) ||
+
+((board.owner(0,0) == p) &&
+ (board.owner(1,0) == p) &&
+ (board.owner(2,0) == p)) ||
+
+((board.owner(0,1) == p) &&
+ (board.owner(1,1) == p) &&
+ (board.owner(2,1) == p)) ||
+
+((board.owner(0,2) == p) &&
+ (board.owner(1,2) == p) &&
+ (board.owner(2,2) == p)) ||
+
+((board.owner(0,0) == p) &&
+ (board.owner(1,1) == p) &&
+ (board.owner(2,2) == p)) ||
+
+((board.owner(0,2) == p) &&
+ (board.owner(1,1) == p) &&
+ (board.owner(2,0) == p)))
+      {return true;}
+  else {return false;}
+}
+
+public Player winner() {
+  if (hasWon (board.noughtP)) {
+    return board.noughtP;
+  } else if (hasWon (board.crossP)) {
+    return board.crossP;
+  } else return null;
+}
+
+public boolean isDraw() {
+  for (int i=0; i<3; i++) {
+    for (int j=0; j<3; j++) {
+      if (board.owner(i,j) == null) return false;
+    }
+  }
+  return true;
+}
+
+}
