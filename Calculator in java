@@ -1,0 +1,149 @@
+s
+Algorithms
+Interview Preparation
+Topic-wise Practice
+C++
+Java
+Python
+ Hiring Challenge 
+Competitive Programming
+Machine Learning
+Write & Earn
+JavaScript
+SDE Sheet
+Puzzles
+GFG School
+Projects
+▲
+Related Articles
+Arrays in Java
+Split() String method in Java with examples
+Arrays.sort() in Java with examples
+For-each loop in Java
+Reverse a string in Java
+Object Oriented Programming (OOPs) Concept in Java
+HashMap in Java with Examples
+How to iterate any Map in Java
+Initialize an ArrayList in Java
+ArrayList in Java
+Multidimensional Arrays in Java
+Stack Class in Java
+Interfaces in Java
+Overriding in Java
+How to add an element to an Array in Java?
+LinkedList in Java
+Singleton Class in Java
+Set in Java
+Inheritance in Java
+Classes and Objects in Java
+Convert a String to Character Array in Java
+Collections in Java
+Queue Interface In Java
+Collections.sort() in Java with Examples
+Initializing a List in Java
+Math pow() method in Java with Example
+Multithreading in Java
+Polymorphism in Java
+PriorityQueue in Java
+How to determine length or size of an Array in Java?
+Basic Calculator Program Using Java
+
+Difficulty Level : Medium
+ Last Updated : 17 Nov, 2020
+Create a simple calculator which can perform basic arithmetic operations like addition, subtraction, multiplication or division depending upon the user input.
+
+Example :
+
+Enter the numbers: 
+
+2
+
+2
+
+Enter the operator (+,-,*,/)
+
++
+
+The final result:
+
+2.0 + 2.0 = 4.0
+
+Approach Used:
+
+Take two numbers using the Scanner class. The switch case branching is used to execute a particular section.
+Using a switch case to evaluate respective operations.
+// Java program for simple calculator 
+  
+import java.io.*; 
+import java.lang.*; 
+import java.lang.Math; 
+import java.util.Scanner; 
+public class BasicCalculator { 
+  
+    public static void main(String[] args) 
+    { 
+        // stores two numbers 
+        double num1, num2; 
+  
+        // Take input from the user 
+        Scanner sc = new Scanner(System.in); 
+  
+        System.out.println("Enter the numbers"); 
+  
+        // take the inputs 
+        num1 = sc.nextDouble(); 
+  
+        num2 = sc.nextDouble(); 
+  
+        System.out.println("Enter the operator (+,-,*,/)"); 
+  
+        char op = sc.next().charAt(0); 
+  
+        double o = 0; 
+  
+        switch (op) { 
+  
+        // case to add two numbers 
+        case '+': 
+  
+            o = num1 + num2; 
+  
+            break; 
+  
+        // case to subtract two numbers 
+        case '-': 
+  
+            o = num1 - num2; 
+  
+            break; 
+  
+        // case to multiply two numbers 
+        case '*': 
+  
+            o = num1 * num2; 
+  
+            break; 
+  
+        // case to divide two numbers 
+        case '/': 
+  
+            o = num1 / num2; 
+  
+            break; 
+  
+        default: 
+  
+            System.out.println("You enter wrong input"); 
+  
+            break; 
+        } 
+  
+        System.out.println("The final result:"); 
+  
+        System.out.println(); 
+  
+        // print the final result 
+        System.out.println(num1 + " " + op + " " + num2 
+                           + " = " + o); 
+    } 
+}
